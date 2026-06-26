@@ -3,5 +3,5 @@
 export const BOOKING_URL = 'https://www.airbnb.fr/rooms/924009016910119446';
 
 // Production URL, used for canonical links, hreflang, sitemap and social cards.
-// Update this to your real Vercel URL or custom domain once deployed.
-export const SITE_URL = 'https://maison-pampa.vercel.app';
+// Update this if you later attach a custom domain.
+export const SITE_URL = 'https://site-pampa.vercel.app';
