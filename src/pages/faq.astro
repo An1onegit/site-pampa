@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Faq from '../components/sections/Faq.astro';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations('fr');
+---
+<Layout locale="fr" pageKey="faq" title={t.faq.title}>
+  <Faq locale="fr" />
+</Layout>

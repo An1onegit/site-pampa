@@ -1,0 +1,21 @@
+---
+interface Props { items: { q: string; a: string[] }[]; }
+const { items } = Astro.props;
+---
+<div class="accordion">
+  {items.map((item) => (
+    <details class="qa">
+      <summary>{item.q}</summary>
+      <div class="answer">{item.a.map((p) => <p>{p}</p>)}</div>
+    </details>
+  ))}
+</div>
+<style>
+  .qa { border-top: 1px solid var(--line); padding-block: var(--s-2); }
+  .qa summary { cursor: pointer; font-family: var(--serif); font-size: 1.2rem; color: var(--pine); list-style: none; }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa summary::before { content: '+'; margin-right: 0.6rem; color: var(--sage-deep); }
+  .qa[open] summary::before { content: '–'; }
+  .answer { color: var(--ink-soft); max-width: var(--measure); padding-top: var(--s-1); }
+  .answer p { margin: 0 0 var(--s-1); }
+</style>

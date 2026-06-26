@@ -1,0 +1,49 @@
+:root {
+  /* ---- color: clean off-white + botanical pine + pampas wheat ---- */
+  --paper: #ffffff;      /* lightest */
+  --cream: #fbf9f4;      /* page base, near-white with a hint of warmth */
+  --sand:  #f3efe6;      /* alt section */
+  --tint:  #eef2e9;      /* sage-tinted block */
+  --ink:   #222c25;
+  --ink-soft: #586458;
+  --pine:  #2f5d54;
+  --pine-deep: #20413a;
+  --forest: #15302a;     /* dark color-block */
+  --sage:  #a3b97c;
+  --sage-deep: #7d9457;
+  --wheat: #c8a662;      /* pampas accent */
+  --wheat-soft: #e0c98f;
+  --line: #e1dac9;       /* hairline on light */
+  --line-dark: #34564d;  /* hairline on pine */
+
+  /* ---- type ---- */
+  --display: 'Fraunces Variable', 'EB Garamond', Georgia, serif;       /* headings */
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;          /* body */
+  --serif-display: 'Cormorant Garamond', var(--serif);                /* wordmark + italic accents */
+  --ui: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif; /* nav + labels */
+
+  /* fluid type scale */
+  --t-eyebrow: 0.78rem;
+  --t-body: 1.12rem;
+  --t-lead: clamp(1.25rem, 1.8vw, 1.6rem);
+  --t-h3: clamp(1.35rem, 2vw, 1.7rem);
+  --t-h2: clamp(2rem, 4.4vw, 3.4rem);
+  --t-h1: clamp(2.6rem, 6vw, 4.6rem);
+  --t-display: clamp(4.5rem, 21vw, 20rem);
+
+  /* ---- space ---- */
+  --s-1: 0.5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2.5rem;
+  --s-5: 4rem; --s-6: 6rem; --s-7: 9rem;
+  --section: clamp(3.75rem, 8vw, 7.5rem);
+
+  /* ---- layout ---- */
+  --measure: 64ch;
+  --page-max: 1200px;
+  --page-pad: clamp(1.25rem, 4vw, 3rem);
+  --radius: 6px;
+  --radius-lg: 14px;
+
+  /* one tasteful elevation, used only on hover */
+  --lift: 0 18px 40px -24px rgba(21, 48, 42, 0.45);
+  --ease: cubic-bezier(0.22, 0.68, 0.2, 1);
+}

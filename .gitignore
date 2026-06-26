@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+# build output
+dist/
+.astro/
+# brainstorming companion (local only)
+.superpowers/
+# os/editor
+.DS_Store
+Thumbs.db
+*.log
+
+# source guide PDF — SENSITIVE (Wi-Fi password, key-box, alarm, personal data). Keep local only.
+*.pdf
+# internal brainstorm / spec / plan docs — contain the same transcribed sensitive info.
+docs/superpowers/

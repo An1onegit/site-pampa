@@ -1,0 +1,63 @@
+---
+import { getNav, useTranslations } from '../i18n/utils';
+import { routes } from '../i18n/routes';
+import type { Locale } from '../i18n/routes';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const nav = getNav(locale, t);
+const year = new Date().getFullYear();
+const contactLine = locale === 'fr' ? 'Vos hôtes' : 'Your hosts';
+---
+<footer class="site-footer">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <p class="foot-word">Maison Pampa</p>
+      <p class="foot-tag display-italic">{t.meta.tagline}</p>
+      <p class="foot-place">{t.meta.locationLine}</p>
+    </div>
+
+    <nav class="foot-nav" aria-label="Footer">
+      {nav.slice(1).map((item) => (
+        <a class="ulink" href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="foot-contact">
+      <p class="foot-label">{contactLine}</p>
+      <p>Stéphanie &amp; Brice</p>
+      <p><a class="ulink" href="tel:0661425919">06 61 42 59 19</a></p>
+      <p><a class="ulink" href="mailto:stephanieponcelet@gmail.com">stephanieponcelet@gmail.com</a></p>
+    </div>
+  </div>
+
+  <div class="container foot-base">
+    <span>&copy; {year} Maison Pampa</span>
+    <span>{t.meta.locationLine}</span>
+  </div>
+</footer>
+<style>
+  .site-footer {
+    background: var(--forest); color: #d6d0c0;
+    padding-block: clamp(3rem, 6vw, 5rem) var(--s-3); margin-top: var(--s-5);
+  }
+  .foot-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1.2fr; gap: var(--s-4);
+    padding-bottom: var(--s-5);
+  }
+  .foot-word { font-family: var(--serif-display); font-weight: 600; font-size: 1.9rem; letter-spacing: 0.05em; color: var(--paper); margin: 0; }
+  .foot-tag { color: var(--wheat-soft); font-size: 1.4rem; margin: 0.3rem 0 0.8rem; }
+  .foot-place, .foot-label { font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--sage); }
+  .foot-nav { display: flex; flex-direction: column; gap: 0.6rem; padding-top: 0.4rem; }
+  .foot-nav a, .foot-contact a { color: #e3ddcd; }
+  .foot-contact p { margin: 0 0 0.35rem; }
+  .foot-label { margin-bottom: 0.7rem; }
+  .foot-base {
+    display: flex; justify-content: space-between; gap: var(--s-2); flex-wrap: wrap;
+    border-top: 1px solid var(--line-dark); padding-top: var(--s-3);
+    font-family: var(--ui); font-size: 0.74rem; letter-spacing: 0.08em; color: var(--sage);
+  }
+  @media (max-width: 760px) {
+    .foot-grid { grid-template-columns: 1fr; gap: var(--s-4); }
+  }
+</style>

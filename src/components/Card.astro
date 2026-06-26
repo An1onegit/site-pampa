@@ -1,0 +1,44 @@
+---
+interface Props { title: string; text: string; href?: string; linkText?: string; index?: number; }
+const { title, text, href, linkText, index } = Astro.props;
+const num = typeof index === 'number' ? String(index + 1).padStart(2, '0') : undefined;
+const Tag = href ? 'a' : 'article';
+---
+<Tag class="card" href={href}>
+  {num && <span class="card-num">{num}</span>}
+  <h3 class="card-title">{title}</h3>
+  <p class="card-text">{text}</p>
+  {href && linkText && (
+    <span class="card-link">{linkText}<span class="arr">&rarr;</span></span>
+  )}
+</Tag>
+<style>
+  .card {
+    display: block; position: relative; isolation: isolate;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: var(--s-4) var(--s-3) var(--s-3);
+    text-decoration: none; color: var(--ink);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
+    overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; left: 0; top: 0; height: 3px; width: 0;
+    background: var(--wheat); transition: width 0.4s var(--ease);
+  }
+  a.card:hover { transform: translateY(-5px); box-shadow: var(--lift); border-color: var(--sage); }
+  a.card:hover::before { width: 100%; }
+
+  .card-num {
+    font-family: var(--display); font-size: 1rem; font-weight: 500;
+    color: var(--wheat); letter-spacing: 0.05em;
+  }
+  .card-title { margin: 0.6rem 0 0.5rem; color: var(--pine); }
+  .card-text { color: var(--ink-soft); margin: 0; font-size: 1rem; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 0.5em; margin-top: var(--s-3);
+    font-family: var(--ui); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--pine);
+  }
+  .card-link .arr { transition: transform 0.3s var(--ease); }
+  a.card:hover .card-link .arr { transform: translateX(5px); }
+</style>

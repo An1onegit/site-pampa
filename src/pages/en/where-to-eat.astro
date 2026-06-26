@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AreaPage from '../../components/sections/AreaPage.astro';
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations('en');
+---
+<Layout locale="en" pageKey="eat" title={t.area.tabs.eat}>
+  <AreaPage locale="en" kind="eat" />
+</Layout>

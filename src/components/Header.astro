@@ -1,0 +1,146 @@
+---
+import { getNav, useTranslations, getAltUrl } from '../i18n/utils';
+import { routes } from '../i18n/routes';
+import { BOOKING_URL } from '../config';
+import type { Locale, PageKey } from '../i18n/routes';
+interface Props { locale: Locale; pageKey: PageKey; heroPage?: boolean; }
+const { locale, pageKey, heroPage = false } = Astro.props;
+const t = useTranslations(locale);
+const nav = getNav(locale, t);
+const current = routes[pageKey][locale];
+const altUrl = getAltUrl(pageKey, locale);
+---
+<header class:list={["site-header", { "is-hero": heroPage }]} data-header>
+  <div class="bar container">
+    <a class="brand" href={routes.home[locale]}>
+      <span class="brand-name">Maison Pampa</span>
+      <span class="brand-sub">Normandie</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu" />
+    <label for="nav-toggle" class="burger" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="nav" aria-label="Primary">
+      {nav.map((item) => (
+        <a href={item.href} class="nav-link" aria-current={item.href === current ? 'page' : undefined}>{item.label}</a>
+      ))}
+      <span class="lang" role="group" aria-label="Language">
+        <span class="lang-cur">{locale === 'fr' ? 'FR' : 'EN'}</span>
+        <span class="lang-sep">/</span>
+        <a class="lang-alt" href={altUrl} hreflang={locale === 'fr' ? 'en' : 'fr'}>{locale === 'fr' ? 'EN' : 'FR'}</a>
+      </span>
+      <a class="book-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">{t.bookLabel}</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Default (content pages): solid bar in normal flow. */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s var(--ease), border-color 0.3s;
+  }
+  /* Hero page: overlay the full-screen image, transparent until scrolled. */
+  .site-header.is-hero {
+    position: fixed; left: 0; right: 0;
+    background: transparent;
+    border-bottom-color: transparent;
+  }
+  .site-header.is-hero.is-scrolled {
+    background: rgba(251, 249, 244, 0.82);
+    backdrop-filter: blur(8px);
+    border-bottom-color: var(--line);
+  }
+  /* Legibility for the transparent state over the sky. */
+  .site-header.is-hero:not(.is-scrolled) .brand-name,
+  .site-header.is-hero:not(.is-scrolled) .nav-link,
+  .site-header.is-hero:not(.is-scrolled) .brand-sub,
+  .site-header.is-hero:not(.is-scrolled) .lang { text-shadow: 0 1px 12px rgba(255, 255, 255, 0.5); }
+  .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--s-3);
+    padding-block: clamp(0.8rem, 1.6vw, 1.25rem);
+  }
+
+  .brand { display: grid; line-height: 1; text-decoration: none; }
+  .brand-name {
+    font-family: var(--serif-display); font-weight: 600;
+    font-size: clamp(1.35rem, 2.4vw, 1.7rem); letter-spacing: 0.05em;
+    color: var(--pine);
+  }
+  .brand-sub {
+    font-family: var(--ui); font-size: 0.62rem; letter-spacing: 0.34em;
+    text-transform: uppercase; color: var(--sage-deep); margin-top: 5px;
+  }
+
+  .nav { display: flex; align-items: center; gap: clamp(1rem, 2.2vw, 2rem); }
+  .nav-link {
+    font-family: var(--ui); font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.05em; color: var(--ink); position: relative; padding-block: 4px;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -2px;
+    width: 100%; height: 1.5px; background: var(--wheat);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease);
+  }
+  .nav-link:hover { color: var(--pine); }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .nav-link[aria-current='page'] { color: var(--pine); }
+  .nav-link[aria-current='page']::after { transform: scaleX(1); }
+
+  .lang {
+    display: inline-flex; align-items: center; gap: 0.4em;
+    font-family: var(--ui); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+    padding-left: clamp(0.6rem, 1.4vw, 1.1rem); margin-left: 0.2rem;
+    border-left: 1px solid var(--line);
+  }
+  .lang-cur { color: var(--pine); }
+  .lang-sep { color: var(--line); }
+  .lang-alt { color: var(--ink-soft); }
+  .lang-alt:hover { color: var(--pine); }
+
+  .book-btn {
+    font-family: var(--ui); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--paper); background: var(--pine); border: 1px solid var(--pine);
+    padding: 0.62em 1.2em; border-radius: var(--radius); white-space: nowrap;
+    transition: background 0.25s var(--ease), transform 0.2s var(--ease);
+  }
+  .book-btn:hover { background: var(--pine-deep); color: var(--paper); transform: translateY(-1px); }
+  /* on the transparent hero bar, lift it off the photo a touch */
+  .site-header.is-hero:not(.is-scrolled) .book-btn { box-shadow: 0 6px 20px -6px rgba(15, 30, 25, 0.5); }
+
+  .nav-toggle { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .burger { display: none; }
+
+  @media (max-width: 900px) {
+    .burger {
+      display: inline-flex; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; z-index: 2;
+    }
+    .burger span {
+      width: 26px; height: 2px; background: var(--pine);
+      transition: transform 0.3s var(--ease), opacity 0.2s;
+    }
+    .nav {
+      position: fixed; inset: 0 0 0 auto; width: min(82vw, 360px);
+      flex-direction: column; align-items: flex-start; justify-content: center;
+      gap: var(--s-3); padding: var(--s-5) var(--s-4);
+      background: var(--cream); border-left: 1px solid var(--line);
+      transform: translateX(100%); transition: transform 0.4s var(--ease);
+      box-shadow: var(--lift);
+    }
+    .nav-link { font-size: 1.3rem; font-family: var(--display); letter-spacing: 0; }
+    .nav-link::after { bottom: -3px; }
+    .lang { border-left: 0; padding-left: 0; margin-left: 0; font-size: 1.05rem; margin-top: var(--s-2); }
+    .nav-toggle:checked ~ .nav { transform: translateX(0); }
+    .nav-toggle:checked ~ .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle:checked ~ .burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .site-header.is-scrolled { background: rgba(244, 236, 218, 0.94); }
+  }
+  .nav-toggle:focus-visible ~ .burger { outline: 2px solid var(--pine); outline-offset: 3px; border-radius: 4px; }
+</style>

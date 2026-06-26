@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import { routes } from '../i18n/routes';
+---
+<Layout locale="fr" pageKey="home" title="Page introuvable">
+  <Section eyebrow="Erreur 404" title="Cette page n’existe pas">
+    <div class="prose">
+      <p>Désolé, la page que vous cherchez est introuvable. <span lang="en">Sorry, this page could not be found.</span></p>
+      <p>
+        <a class="btn" href={routes.home.fr}>Retour à l’accueil</a>
+        <a class="btn-ghost" href={routes.home.en} style="margin-left:1rem">Back home</a>
+      </p>
+    </div>
+  </Section>
+</Layout>

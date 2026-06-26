@@ -1,0 +1,73 @@
+---
+import Hero from '../Hero.astro';
+import Section from '../Section.astro';
+import Card from '../Card.astro';
+import Gallery from './Gallery.astro';
+import { useTranslations } from '../../i18n/utils';
+import { routes } from '../../i18n/routes';
+import type { Locale } from '../../i18n/routes';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const more = locale === 'fr' ? 'Découvrir' : 'Explore';
+const [welcomeLead, ...welcomeRest] = t.home.welcomeBody;
+const aboutAlt = locale === 'fr' ? 'La terrasse de la Maison Pampa' : 'The terrace at Maison Pampa';
+---
+<Hero word={t.home.heroWord} tagline={t.meta.tagline} />
+
+<Section eyebrow={t.home.hosts} title={t.home.welcomeTitle} id="enter-section">
+  <div class="welcome">
+    <p class="lead" data-reveal>{welcomeLead}</p>
+    <div class="welcome-body" data-reveal style="--reveal-delay:0.1s">
+      {welcomeRest.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</Section>
+
+<Section variant="alt" eyebrow={locale === 'fr' ? 'Depuis 2019' : 'Since 2019'} title={t.home.aboutTitle}>
+  <div class="about">
+    <figure class="about-figure" data-reveal>
+      <img src="/images/imageAirbnb.jpeg" alt={aboutAlt} loading="lazy" />
+    </figure>
+    <div class="prose about-text" data-reveal style="--reveal-delay:0.1s">
+      {t.home.aboutBody.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</Section>
+
+<Section variant="pine" eyebrow={locale === 'fr' ? 'Le guide' : 'The guide'} title={t.home.overviewTitle}>
+  <div class="overview-grid">
+    {t.home.overview.map((o, i) => (
+      <div data-reveal style={`--reveal-delay:${i * 0.07}s`}>
+        <Card index={i} title={o.title} text={o.text} href={routes[o.key as keyof typeof routes][locale]} linkText={more} />
+      </div>
+    ))}
+  </div>
+</Section>
+
+<Gallery locale={locale} />
+
+<style>
+  .welcome { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .welcome .lead { margin: 0; color: var(--pine); }
+  .welcome-body { color: var(--ink-soft); }
+  .welcome-body p:last-child { margin-bottom: 0; }
+
+  .about { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .about-figure { margin: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--lift); }
+  .about-figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; display: block; }
+  .about-text { font-size: var(--t-lead); line-height: 1.55; }
+
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--s-3); }
+  /* cards keep their own light surface inside the dark section */
+  .section--pine :global(.card) { background: #1c3a33; border-color: var(--line-dark); color: #d9d3c4; }
+  .section--pine :global(.card-title) { color: var(--paper); }
+  .section--pine :global(.card-text) { color: #b9c2b2; }
+  .section--pine :global(.card-link) { color: var(--wheat-soft); }
+  .section--pine :global(a.card:hover) { border-color: var(--wheat); }
+
+  @media (max-width: 820px) {
+    .welcome, .about { grid-template-columns: 1fr; gap: var(--s-4); }
+    .about-figure { max-width: 22rem; }
+  }
+</style>

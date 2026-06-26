@@ -1,0 +1,97 @@
+---
+interface Props { word: string; tagline: string; }
+const { word, tagline } = Astro.props;
+---
+<section class="hero" data-hero>
+  <!--
+    Layered hero. Two images of the SAME photo, same dimensions, stacked with
+    identical object-fit/position so they line up exactly:
+      hero-bg.jpg      = the full photo (sky + house + garden)
+      foreground.webp  = the same frame with the sky erased to transparent
+    The big word sits BETWEEN them, so it shows against the sky and disappears
+    behind the house/trees. To change the cut-out: edit source-photos/foreground.png
+    (same framing as hero-bg.jpg, sky erased) and run `python scripts/optimize-hero.py`
+    to regenerate the optimized foreground.webp. No code change needed.
+  -->
+  <img class="hero-layer hero-bg" src="/images/hero-bg.jpg" alt="" />
+
+  <p class="hero-word" data-hero-word aria-hidden="true">{word}</p>
+
+  <img class="hero-layer hero-fg" src="/images/foreground.webp" alt="" aria-hidden="true" />
+
+  <div class="hero-intro container">
+    <h1 class="visually-hidden">Maison Pampa</h1>
+    <p class="hero-tagline display-italic">{tagline}</p>
+  </div>
+
+  <a class="hero-cue" href="#enter" aria-label="Défiler">
+    <span>Défiler</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 V18 M6 13 l6 6 l6 -6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  </a>
+</section>
+<span id="enter"></span>
+<script src="./hero.js"></script>
+
+<style>
+  .hero {
+    position: relative; height: 100svh; min-height: 560px; overflow: hidden;
+    background: #cfe0ea; /* sky tone behind, in case the photo is slow to load */
+  }
+  /* both image layers fill the hero identically -> they stay aligned */
+  .hero-layer {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 42%;
+    -webkit-user-select: none; user-select: none; pointer-events: none;
+  }
+  .hero-bg { z-index: 0; }
+  .hero-fg { z-index: 2; }
+
+  .hero-word {
+    position: absolute; left: 0; right: 0; top: 12%; margin: 0; text-align: center;
+    font-family: var(--display); font-weight: 560;
+    font-size: clamp(4rem, 17vw, 16rem); letter-spacing: -0.015em; line-height: 0.9;
+    color: #fbf7ec; z-index: 1; will-change: transform, opacity;
+    text-shadow: 0 6px 36px rgba(20, 38, 30, 0.28);
+    /* visible at rest; sinks DOWN behind the house as you scroll */
+    transform: translateY(calc(var(--hero-progress, 0) * 42vh));
+    opacity: calc(1 - var(--hero-progress, 0) * 1.1);
+  }
+
+  .hero-intro { position: absolute; top: clamp(4.75rem, 10vh, 6.5rem); left: 0; right: 0; z-index: 3; text-align: center; }
+  .hero-tagline { font-size: clamp(1.4rem, 3.2vw, 2.4rem); margin: 0; color: #20413a; text-shadow: 0 1px 14px rgba(255,255,255,0.5); }
+  .hero-place {
+    font-family: var(--ui); font-size: 0.74rem; letter-spacing: 0.32em; text-transform: uppercase;
+    color: #2f5d54; margin-top: 0.8rem; text-shadow: 0 1px 12px rgba(255,255,255,0.55);
+  }
+
+  .hero-cue {
+    position: absolute; left: 50%; bottom: 1.6rem; transform: translateX(-50%);
+    z-index: 4; display: inline-flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    font-family: var(--ui); font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: #fbf7ec; text-shadow: 0 2px 10px rgba(20,38,30,0.4);
+  }
+  .hero-cue svg { width: 20px; height: 20px; animation: cue 1.8s var(--ease) infinite; }
+  @keyframes cue { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-word {
+        animation: heroSink linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 88vh;
+        transform: none; opacity: 1;
+      }
+      @keyframes heroSink {
+        to { transform: translateY(42vh); opacity: 0; }
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-word { top: 16%; }
+    .hero-cue { display: none; }
+    .hero-tagline { font-size: clamp(1.4rem, 6vw, 2rem); }
+  }
+</style>
