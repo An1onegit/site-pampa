@@ -38,4 +38,14 @@ describe('dictionaries', () => {
     expect(nav.map((n) => n.key)).toEqual(['home', 'eat', 'shop', 'do', 'faq']);
     expect(nav[0].href).toBe('/');
   });
+
+  it('includes Chez Jeannette in the eat recommendations', () => {
+    const frRestaurant = fr.area.eat.find((place) => place.name === 'Chez Jeannette');
+    const enRestaurant = en.area.eat.find((place) => place.name === 'Chez Jeannette');
+
+    expect(frRestaurant).toBeDefined();
+    expect(enRestaurant).toBeDefined();
+    expect(frRestaurant?.address).toBe("5 Rte de l'Ancien Puits, 76190 Les Hauts-de-Caux");
+    expect(frRestaurant?.text).toContain('Cuisine française simple et efficace');
+  });
 });

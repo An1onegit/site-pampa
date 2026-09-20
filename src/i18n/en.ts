@@ -42,6 +42,7 @@ const en: Dictionary = {
       { name: "Beach Boy", text: "The best burger in the area, opposite the beach. A 30-minute drive.", address: "Parking du casino, Rue du Casino, 76460 Saint-Valery-en-Caux" },
       { name: "Skéli", text: "Creative cooking. A lovely stop when visiting the Boucles de Seine.", address: "2 Pl. de l'Église, 76490 Rives-en-Seine" },
       { name: "La Source", text: "French neo-bistro, highly recommended. Booking required.", address: "21 Rue Victor Hugo, 76980 Veules-les-Roses" },
+      { name: "Chez Jeannette", text: "Simple, effective French cuisine.", address: "5 Rte de l'Ancien Puits, 76190 Les Hauts-de-Caux" },
     ],
     shop: [
       { groupTitle: "Markets", items: ["Friday morning: Saint-Valery-en-Caux", "Friday 4–7 pm: organic local producers at the Pré d'Artemare farm", "Saturday morning: Doudeville (small), Yvetot (large)", "Sunday morning: Luneray (large)", "Wednesday morning: Veules-les-Roses (small)", "Monday morning: Cany-Barville (large and lovely)"] },

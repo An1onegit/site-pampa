@@ -42,6 +42,7 @@ const fr: Dictionary = {
       { name: "Beach Boy", text: "Le meilleur burger de la région, face à la plage. 30 min en voiture.", address: "Parking du casino, Rue du Casino, 76460 Saint-Valery-en-Caux" },
       { name: "Skéli", text: "Cuisine créative. Belle pause lors de la visite des Boucles de Seine.", address: "2 Pl. de l'Église, 76490 Rives-en-Seine" },
       { name: "La Source", text: "Néobistrot français, fortement recommandé. Réservation obligatoire.", address: "21 Rue Victor Hugo, 76980 Veules-les-Roses" },
+      { name: "Chez Jeannette", text: "Cuisine française simple et efficace.", address: "5 Rte de l'Ancien Puits, 76190 Les Hauts-de-Caux" },
     ],
     shop: [
       { groupTitle: "Marchés", items: ["Vendredi matin : Saint-Valery-en-Caux", "Vendredi 16h–19h : producteurs bio à la ferme du Pré d'Artemare", "Samedi matin : Doudeville (petit), Yvetot (grand)", "Dimanche matin : Luneray (grand)", "Mercredi matin : Veules-les-Roses (petit)", "Lundi matin : Cany-Barville (grand et beau)"] },
