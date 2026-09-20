@@ -14,7 +14,7 @@ npm install
 
 ## Develop
 
-- `npm run dev` then open the printed local URL
+- `npm run dev` then open the printed local URL 
 - `npm run build` (outputs static files to `dist/`)
 - `npm run preview` (serve the built `dist/` locally)
 - `npm test` (i18n parity and fallback checks)
