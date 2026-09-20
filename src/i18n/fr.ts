@@ -3,7 +3,7 @@ import type { Dictionary } from './types';
 const fr: Dictionary = {
   meta: {
     siteName: 'Maison Pampa',
-    tagline: 'Bienvenue chez nous',
+    tagline: 'Bienvenue à la maison',
     locationLine: 'Anvéville, Normandie',
     description: "Le guide de la Maison Pampa, notre longère normande rénovée. Tout pour profiter de votre séjour.",
   },
@@ -12,11 +12,10 @@ const fr: Dictionary = {
   langToggle: { fr: 'FR', en: 'EN', label: 'Langue' },
   home: {
     heroWord: 'PAMPA',
-    welcomeTitle: 'Bienvenue dans notre maison de famille',
+    welcomeTitle: 'Nous serons ravi de vous accueillir dans notre maison de famille',
     welcomeBody: [
-      "Nous sommes ravis de vous accueillir et espérons que vous passerez un séjour confortable et agréable.",
-      "Cette maison chaleureuse est conçue pour vous offrir un séjour relaxant. Vous y trouverez tout ce dont vous avez besoin pour vous sentir comme chez vous, d'une cuisine entièrement équipée à une connexion internet haut débit.",
-      "Vous trouverez ici des idées et des conseils pour vos repas, vos achats et vos activités aux alentours.",
+      "Vous y trouverez tout ce dont vous avez besoin pour vous sentir comme chez vous: une cuisine entièrement équipée, un séjour/salon avec une grande cheminée, trois chambres confortables, deux salles de bain, et une terasse avec tout le mobilier extérieur.",
+      "Ce site présente la maison, ainsi que des idées et des conseils pour vos activités aux alentours, vos repas et vos achats.",
     ],
     aboutTitle: 'À propos de la maison',
     aboutBody: [
@@ -40,9 +39,11 @@ const fr: Dictionary = {
       { name: "Le Champêtre", text: "Joliment situé près de la rivière Durdent. Réservation recommandée.", address: "11 Rte de la Vallée, 76450 Le Hanouard" },
       { name: "Esta'frites", text: "Excellentes frites, bières et brochettes sur la plage. Arrivez tôt.", address: "Digue Jean Corruble, 76450 Veulettes-sur-Mer" },
       { name: "Beach Boy", text: "Le meilleur burger de la région, face à la plage. 30 min en voiture.", address: "Parking du casino, Rue du Casino, 76460 Saint-Valery-en-Caux" },
+      { name: "Le Wave", text: "Fish & chips, huitres, croques-monsieur face à la mer.", address: "5 Digue Jean Corruble, 76450 Veulettes-sur-Mer" },
       { name: "Skéli", text: "Cuisine créative. Belle pause lors de la visite des Boucles de Seine.", address: "2 Pl. de l'Église, 76490 Rives-en-Seine" },
       { name: "La Source", text: "Néobistrot français, fortement recommandé. Réservation obligatoire.", address: "21 Rue Victor Hugo, 76980 Veules-les-Roses" },
-      { name: "Chez Jeannette", text: "Cuisine française simple et efficace.", address: "5 Rte de l'Ancien Puits, 76190 Les Hauts-de-Caux" },
+      { name: "Chez Jeannette", text: "Cuisine française simple et efficace. À 10 min de la maison.", address: "5 Rte de l'Ancien Puits, 76190 Les Hauts-de-Caux" },
+      { name: "Allouvi", text: "Notre adresse préférée à Fécamp. Réservation recommandée.", address: "23 Quai de la Vicomte, 76400 Fécamp" },
     ],
     shop: [
       { groupTitle: "Marchés", items: ["Vendredi matin : Saint-Valery-en-Caux", "Vendredi 16h–19h : producteurs bio à la ferme du Pré d'Artemare", "Samedi matin : Doudeville (petit), Yvetot (grand)", "Dimanche matin : Luneray (grand)", "Mercredi matin : Veules-les-Roses (petit)", "Lundi matin : Cany-Barville (grand et beau)"] },
@@ -53,21 +54,21 @@ const fr: Dictionary = {
     do: [
       { groupTitle: "Brocantes", items: ["Brocante de Doudeville", "« Vérité Annie », Cany-Barville", "« Cabaret », Hautot-sur-Mer", "« Corniquet boutique », Malleville-les-Grès"] },
       { groupTitle: "Visites", items: ["Varengeville-sur-Mer : église et cimetière de la Marine, vitrail de Georges Braque", "Bois des Moutiers (sur réservation)", "Jardin de Shamrock (hortensias)", "Villes (40–60 min) : Rouen, Le Havre, Étretat, Honfleur, Fécamp"] },
-      { groupTitle: "Sports", items: ["Tennis à Veules-les-Roses, cadre extérieur magnifique", "Golf d'Arnouville : compact 9 trous accessible à tous", "Location de vélos à Veulettes-sur-Mer le long de la Durdent", "Accrobranche à Angiens", "Catamaran à Veules-les-Roses", "Char à voile à Saint-Aubin-sur-Mer"] },
+      { groupTitle: "Sports", items: ["Tennis à Veules-les-Roses, cadre extérieur magnifique", "Golf d'Arnouville : compact 9 trous accessible à tous", "Location de vélos à Veulettes-sur-Mer pour balade le long de la Durdent", "Accrobranche à Angiens", "Catamaran à Veules-les-Roses", "Char à voile à Saint-Aubin-sur-Mer", "Randonnées au départ de la maison ou à proximité"] },
       { groupTitle: "Plage", items: ["La marée peut être forte en Normandie : attention aux horaires.", "Les Petites Dalles : belles maisons 1900, camion à glaces sur le parking.", "Saint-Aubin-sur-Mer : seule plage de sable de la région, sauna une fois par mois.", "Valleuse de Vasterival (près de Varengeville), accessible à marée basse uniquement."] },
     ],
   },
   faq: {
     title: "Questions fréquentes",
     items: [
+      { q: "Comment réserver ?", a: ["Les réservations se font exclusivement par Airbnb. Cliquez sur le bouton \"Reserver\" pour accéderr directement à l'annonce"] },
       { q: "Quels sont les horaires d'arrivée et de départ ?", a: ["Check-in à partir de 15:00, check-out jusqu'à 12:00."] },
-      { q: "Pouvons-nous venir en train ?", a: ["La gare la plus proche est Yvetot (1h40 de Paris Saint-Lazare). Il n'y a pas de bus desservant le village : louez une voiture (agence à la gare), sauf si vous apportez un vélo."] },
+      { q: "Pouvons-nous venir en train ?", a: ["La gare la plus proche est Yvetot (1h40 de Paris Saint-Lazare). Il n'y a pas de bus desservant le village. Vous devrez louer une voiture (agence à la gare)."] },
       { q: "Y a-t-il un parking ?", a: ["Oui, 2 places sont disponibles dans l'allée."] },
       { q: "Puis-je recharger mon véhicule électrique ?", a: ["Non, la maison n'est pas équipée. Deux chargeurs sont disponibles à Doudeville, près du Carrefour Market."] },
       { q: "Le Wi-Fi est-il disponible ?", a: ["Oui, le Wi-Fi haut débit (500 Mb/s) couvre toute la maison."] },
-      { q: "Les serviettes et les draps sont-ils fournis ?", a: ["Non, merci d'apporter les vôtres."] },
-      { q: "Puis-je cuisiner ?", a: ["Absolument. La cuisine est entièrement équipée. Servez-vous et nettoyez après usage."] },
-      { q: "Que faire des poubelles ?", a: ["La collecte a lieu le vendredi matin (décalée d'un jour en cas de jour férié). Le point de dépôt est à 50 m au-dessus de la maison, devant le n°296 : déposez le jeudi soir ou avant 10h le vendredi. Sinon, laissez le sac dans le garage, nous nous en occuperons."] },
+      { q: "Les serviettes et les draps sont-ils fournis ?", a: ["Nous ne fournissons par le linge de maison ni les draps. Vous devrez apporter les votres."] },
+      { q: "Puis-je cuisiner ?", a: ["Absolument. La cuisine est entièrement équipée."] },
     ],
   },
   gallery: {

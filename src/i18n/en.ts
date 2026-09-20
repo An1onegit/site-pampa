@@ -14,7 +14,6 @@ const en: Dictionary = {
     heroWord: 'PAMPA',
     welcomeTitle: 'Welcome to our family home',
     welcomeBody: [
-      'We are delighted to host you and hope you have a comfortable, pleasant stay.',
       'This warm house is made for a relaxing stay. You will find everything you need to feel at home, from a fully equipped kitchen to high-speed internet.',
       'Here you will find ideas and tips for your meals, shopping and things to do nearby.',
     ],
@@ -40,9 +39,11 @@ const en: Dictionary = {
       { name: "Le Champêtre", text: "Beautifully set by the river Durdent. Booking recommended.", address: "11 Rte de la Vallée, 76450 Le Hanouard" },
       { name: "Esta'frites", text: "Excellent fries, beers and skewers on the beach. Arrive early.", address: "Digue Jean Corruble, 76450 Veulettes-sur-Mer" },
       { name: "Beach Boy", text: "The best burger in the area, opposite the beach. A 30-minute drive.", address: "Parking du casino, Rue du Casino, 76460 Saint-Valery-en-Caux" },
+      { name: "Le Wave", text: "Fish & chips, oysters, croque monsieurs by the sea.", address: "5 Digue Jean Corruble, 76450 Veulettes-sur-Mer" },
       { name: "Skéli", text: "Creative cooking. A lovely stop when visiting the Boucles de Seine.", address: "2 Pl. de l'Église, 76490 Rives-en-Seine" },
       { name: "La Source", text: "French neo-bistro, highly recommended. Booking required.", address: "21 Rue Victor Hugo, 76980 Veules-les-Roses" },
-      { name: "Chez Jeannette", text: "Simple, effective French cuisine.", address: "5 Rte de l'Ancien Puits, 76190 Les Hauts-de-Caux" },
+      { name: "Chez Jeannette", text: "Simple, effective French cuisine. 10 minutes from the house.", address: "5 Rte de l'Ancien Puits, 76190 Les Hauts-de-Caux" },
+      { name: "Allouvi", text: "Our favorite spot in Fécamp. Booking recommended.", address: "23 Quai de la Vicomte, 76400 Fécamp" },
     ],
     shop: [
       { groupTitle: "Markets", items: ["Friday morning: Saint-Valery-en-Caux", "Friday 4–7 pm: organic local producers at the Pré d'Artemare farm", "Saturday morning: Doudeville (small), Yvetot (large)", "Sunday morning: Luneray (large)", "Wednesday morning: Veules-les-Roses (small)", "Monday morning: Cany-Barville (large and lovely)"] },
@@ -53,21 +54,21 @@ const en: Dictionary = {
     do: [
       { groupTitle: "Flea markets", items: ["Doudeville flea market", '"Vérité Annie", Cany-Barville', '"Cabaret", Hautot-sur-Mer', '"Corniquet boutique", Malleville-les-Grès'] },
       { groupTitle: "Visits", items: ["Varengeville-sur-Mer: church and seafarers' cemetery, stained glass by Georges Braque", "Bois des Moutiers (by reservation)", "Shamrock Garden (hydrangeas)", "Cities (40–60 min): Rouen, Le Havre, Étretat, Honfleur, Fécamp"] },
-      { groupTitle: "Sports", items: ["Tennis at Veules-les-Roses, in a magnificent outdoor setting", "Golf d'Arnouville: a compact 9 holes for all levels", "Bike rental at Veulettes-sur-Mer, along the Durdent", "Tree-climbing adventure at Angiens", "Catamaran at Veules-les-Roses", "Land yachting at Saint-Aubin-sur-Mer"] },
+      { groupTitle: "Sports", items: ["Tennis at Veules-les-Roses, in a magnificent outdoor setting", "Golf d'Arnouville: a compact 9 holes for all levels", "Bike rental at Veulettes-sur-Mer for a ride along the Durdent", "Tree-climbing adventure at Angiens", "Catamaran at Veules-les-Roses", "Land yachting at Saint-Aubin-sur-Mer", "Hiking from the house or nearby"] },
       { groupTitle: "Beach", items: ["Tides can be strong in Normandy: watch the timetables.", "Les Petites Dalles: beautiful 1900s houses, an ice-cream van in the car park.", "Saint-Aubin-sur-Mer: the only sandy beach in the area, with a sauna once a month.", "Valleuse de Vasterival (near Varengeville), reachable at low tide only."] },
     ],
   },
   faq: {
     title: "FAQ",
     items: [
+      { q: "How do I book?", a: ["Reservations are made exclusively through Airbnb. Click the \"Book\" button to go directly to the listing."] },
       { q: "What are the check-in and check-out times?", a: ["Check-in from 3:00 pm, check-out until 12:00 noon."] },
-      { q: "Can we come by train?", a: ["The nearest station is Yvetot (1h40 from Paris Saint-Lazare). There is no bus to the village, so rent a car (agency at the station) unless you bring a bike."] },
+      { q: "Can we come by train?", a: ["The nearest station is Yvetot (1h40 from Paris Saint-Lazare). There is no bus to the village. You will need to rent a car (agency at the station)."] },
       { q: "Is there parking?", a: ["Yes, 2 spaces are available in the driveway."] },
       { q: "Can I charge my electric car?", a: ["No, the house is not equipped. Two chargers are available in Doudeville, near the Carrefour Market."] },
       { q: "Is Wi-Fi available?", a: ["Yes, high-speed Wi-Fi (500 Mb/s) covers the whole house."] },
       { q: "Are towels and bed linen provided?", a: ["No, please bring your own."] },
-      { q: "Can I cook?", a: ["Absolutely. The kitchen is fully equipped. Help yourself and clean up after use."] },
-      { q: "What about the bins?", a: ["Collection is on Friday morning (shifted a day if there is a public holiday). The drop-off point is 50 m up from the house, in front of number 296: leave bags on Thursday evening or before 10 am on Friday. Otherwise, leave the bag in the garage and we will take care of it."] },
+      { q: "Can I cook?", a: ["Absolutely. The kitchen is fully equipped."] },
     ],
   },
   gallery: {

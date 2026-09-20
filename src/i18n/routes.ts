@@ -9,4 +9,4 @@ export const routes: Record<PageKey, Record<Locale, string>> = {
   faq:  { fr: '/faq',       en: '/en/faq' },
 };
 
-export const navOrder: PageKey[] = ['home', 'eat', 'shop', 'do', 'faq'];
+export const navOrder: PageKey[] = ['home', 'do', 'eat', 'shop', 'faq'];

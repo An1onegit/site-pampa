@@ -19,7 +19,7 @@ const aboutAlt = locale === 'fr' ? 'La terrasse de la Maison Pampa' : 'The terra
   <div class="welcome">
     <p class="lead" data-reveal>{welcomeLead}</p>
     <div class="welcome-body" data-reveal style="--reveal-delay:0.1s">
-      {welcomeRest.map((p) => <p>{p}</p>)}
+      {welcomeRest.map((p, index) => <p class={index === welcomeRest.length - 1 ? 'lead' : undefined}>{p}</p>)}
     </div>
   </div>
 </Section>
@@ -48,9 +48,9 @@ const aboutAlt = locale === 'fr' ? 'La terrasse de la Maison Pampa' : 'The terra
 <Gallery locale={locale} />
 
 <style>
-  .welcome { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
-  .welcome .lead { margin: 0; color: var(--pine); }
-  .welcome-body { color: var(--ink-soft); }
+  .welcome { display: block; }
+  .welcome .lead { margin: 0 0 var(--s-3) 0; color: var(--pine); }
+  .welcome-body { display: grid; gap: var(--s-3); color: var(--ink-soft); }
   .welcome-body p:last-child { margin-bottom: 0; }
 
   .about { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }

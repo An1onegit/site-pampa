@@ -11,18 +11,39 @@ const groups = kind === 'shop' ? a.shop : a.do;
 const mapUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 const mapLabel = locale === 'fr' ? 'Voir sur la carte' : 'View on map';
+const eatSections = [
+  {
+    title: locale === 'fr' ? 'À proximité de la maison' : 'Near the house',
+    items: a.eat.filter((e) => ['Auberge de la Durdent', 'Le Champêtre', 'Chez Jeannette'].includes(e.name)),
+  },
+  {
+    title: locale === 'fr' ? 'En bord de mer' : 'By the sea',
+    items: a.eat.filter((e) => ['Esta\'frites', 'Beach Boy', 'Le Wave'].includes(e.name)),
+  },
+  {
+    title: locale === 'fr' ? 'Bonnes tables' : 'Good tables',
+    items: a.eat.filter((e) => ['Skéli', 'Allouvi', 'La Source'].includes(e.name)),
+  },
+];
 ---
 <Section eyebrow={t.meta.locationLine} title={title} level={1}>
   {kind === 'eat' ? (
-    <div class="eat-grid">
-      {a.eat.map((e) => (
-        <article class="eat" data-reveal>
-          <h3>{e.name}</h3>
-          <p>{e.text}</p>
-          <a class="addr" href={mapUrl(`${e.name}, ${e.address}`)} target="_blank" rel="noopener noreferrer" aria-label={`${mapLabel} : ${e.name}`}>
-            {e.address}<span class="pin" aria-hidden="true">↗</span>
-          </a>
-        </article>
+    <div class="eat-sections">
+      {eatSections.map((section) => (
+        <div class="eat-section" data-reveal>
+          <h2>{section.title}</h2>
+          <div class="eat-grid">
+            {section.items.map((e) => (
+              <article class="eat">
+                <h3>{e.name}</h3>
+                <p>{e.text}</p>
+                <a class="addr" href={mapUrl(`${e.name}, ${e.address}`)} target="_blank" rel="noopener noreferrer" aria-label={`${mapLabel} : ${e.name}`}>
+                  {e.address}<span class="pin" aria-hidden="true">↗</span>
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
       ))}
     </div>
   ) : (
@@ -30,7 +51,34 @@ const mapLabel = locale === 'fr' ? 'Voir sur la carte' : 'View on map';
       {groups.map((g) => (
         <div class="group" data-reveal>
           <h3>{g.groupTitle}</h3>
-          <ul>{g.items.map((i) => <li>{i}</li>)}</ul>
+          <ul>
+            {g.items.map((i) => {
+              const isFleaMarketGroup = kind === 'do' && (g.groupTitle === 'Brocantes' || g.groupTitle === 'Flea markets');
+              const isVisitsGroup = kind === 'do' && (g.groupTitle === 'Visites' || g.groupTitle === 'Visits');
+              const cabaretMapUrl = 'https://www.google.com/maps/place/Brocante+Le+Cabaret/@49.8913846,1.0301525,16.96z/data=!4m15!1m8!3m7!1s0x47e098fe30d32b37:0x8cb2284f1e711c3d!2sRue+du+Cabaret,+76550+Hautot-sur-Mer!3b1!8m2!3d49.8943116!4d1.0313176!16s%2Fg%2F1tpn1vss!3m5!1s0x47e098fff8990b65:0x96aed2b550f00be6!8m2!3d49.8912113!4d1.0310655!16s%2Fg%2F11j8lnt9_m?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D';
+              const boisDesMoutiersUrl = 'https://www.boisdesmoutiers.com/';
+              const shamrockUrl = 'https://www.shamrock-varengeville.com/';
+              const shouldLink = isFleaMarketGroup || (
+                isVisitsGroup && (
+                  i.includes('Bois des Moutiers') ||
+                  i.includes('Shamrock') ||
+                  i.includes('Cabaret')
+                )
+              );
+              const href = isFleaMarketGroup && (i.includes('Cabaret') || i.includes('Hautot-sur-Mer'))
+                ? cabaretMapUrl
+                : isVisitsGroup && i.includes('Bois des Moutiers')
+                  ? boisDesMoutiersUrl
+                  : isVisitsGroup && i.includes('Shamrock')
+                    ? shamrockUrl
+                    : mapUrl(i);
+              return shouldLink ? (
+                <li><a href={href} target="_blank" rel="noopener noreferrer">{i}</a></li>
+              ) : (
+                <li>{i}</li>
+              );
+            })}
+          </ul>
         </div>
       ))}
     </div>
@@ -38,6 +86,8 @@ const mapLabel = locale === 'fr' ? 'Voir sur la carte' : 'View on map';
 </Section>
 
 <style>
+  .eat-sections { display: grid; gap: var(--s-5); }
+  .eat-section h2 { margin: 0 0 var(--s-3); font-size: clamp(1.5rem, 2vw, 2rem); }
   .eat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--s-4); }
   .eat h3 { margin-bottom: 0.3rem; }
   .eat p { color: var(--ink-soft); margin: 0 0 0.35rem; }
@@ -54,4 +104,6 @@ const mapLabel = locale === 'fr' ? 'Voir sur la carte' : 'View on map';
   .group h3 { margin-bottom: 0.6rem; }
   .group ul { margin: 0; padding-left: 1.1rem; }
   .group li { margin-bottom: 0.45rem; max-width: var(--measure); color: var(--ink-soft); }
+  .group a { color: var(--sage-deep); text-decoration: underline; text-underline-offset: 0.12em; }
+  .group a:hover { color: var(--pine); }
 </style>

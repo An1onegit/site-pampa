@@ -35,7 +35,7 @@ describe('dictionaries', () => {
 
   it('getNav returns the pages in order', () => {
     const nav = getNav('fr', fr);
-    expect(nav.map((n) => n.key)).toEqual(['home', 'eat', 'shop', 'do', 'faq']);
+    expect(nav.map((n) => n.key)).toEqual(['home', 'do', 'eat', 'shop', 'faq']);
     expect(nav[0].href).toBe('/');
   });
 
