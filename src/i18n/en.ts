@@ -12,10 +12,10 @@ const en: Dictionary = {
   langToggle: { fr: 'FR', en: 'EN', label: 'Language' },
   home: {
     heroWord: 'PAMPA',
-    welcomeTitle: 'Welcome to our family home',
+    welcomeTitle: 'We would be delighted to welcome you to our family home',
     welcomeBody: [
-      'This warm house is made for a relaxing stay. You will find everything you need to feel at home, from a fully equipped kitchen to high-speed internet.',
-      'Here you will find ideas and tips for your meals, shopping and things to do nearby.',
+      'You will find everything you need to feel at home: a fully equipped kitchen, a living room with a large fireplace, three comfortable bedrooms, two bathrooms, and a terrace with all outdoor furniture.',
+      'This site presents the house, as well as ideas and advice for your activities around the area, your meals and your shopping.',
     ],
     aboutTitle: 'About the house',
     aboutBody: [
@@ -67,7 +67,7 @@ const en: Dictionary = {
       { q: "Is there parking?", a: ["Yes, 2 spaces are available in the driveway."] },
       { q: "Can I charge my electric car?", a: ["No, the house is not equipped. Two chargers are available in Doudeville, near the Carrefour Market."] },
       { q: "Is Wi-Fi available?", a: ["Yes, high-speed Wi-Fi (500 Mb/s) covers the whole house."] },
-      { q: "Are towels and bed linen provided?", a: ["No, please bring your own."] },
+      { q: "Are towels and bed linen provided?", a: ["No, we do not provide household linen or bed sheets. You will need to bring your own."] },
       { q: "Can I cook?", a: ["Absolutely. The kitchen is fully equipped."] },
     ],
   },

@@ -67,7 +67,7 @@ const fr: Dictionary = {
       { q: "Y a-t-il un parking ?", a: ["Oui, 2 places sont disponibles dans l'allée."] },
       { q: "Puis-je recharger mon véhicule électrique ?", a: ["Non, la maison n'est pas équipée. Deux chargeurs sont disponibles à Doudeville, près du Carrefour Market."] },
       { q: "Le Wi-Fi est-il disponible ?", a: ["Oui, le Wi-Fi haut débit (500 Mb/s) couvre toute la maison."] },
-      { q: "Les serviettes et les draps sont-ils fournis ?", a: ["Nous ne fournissons par le linge de maison ni les draps. Vous devrez apporter les votres."] },
+      { q: "Les serviettes et les draps sont-ils fournis ?", a: ["Nous ne fournissons ni le linge de maison ni les draps. Vous devrez apporter les vôtres."] },
       { q: "Puis-je cuisiner ?", a: ["Absolument. La cuisine est entièrement équipée."] },
     ],
   },
