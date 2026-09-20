@@ -2,9 +2,18 @@
 
 Static bilingual (French / English) guest guide for the Maison Pampa rental house, built with Astro.
 
+## Install
+
+You need [Node.js](https://nodejs.org/) and npm installed. Node.js includes npm, so installing Node.js is enough.
+
+Then install the project dependencies before running the site locally:
+
+```bash
+npm install
+```
+
 ## Develop
 
-- `npm install`
 - `npm run dev` then open the printed local URL
 - `npm run build` (outputs static files to `dist/`)
 - `npm run preview` (serve the built `dist/` locally)
